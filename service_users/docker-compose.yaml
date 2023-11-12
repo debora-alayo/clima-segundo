@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  events-users:
+    build: .
+    command: python app/events.py
+
+networks:
+  default:
+    name: 'microsvcs'
+    external: true
