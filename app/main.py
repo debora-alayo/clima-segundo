@@ -10,6 +10,7 @@ from datetime import datetime
 from sqlalchemy.orm import sessionmaker
 from pydantic import BaseModel
 from .models import Base, ClimaCiudad
+import os
 
 
 
@@ -30,7 +31,15 @@ headers = {
 app = FastAPI(debug=True)
 
 
-database_url = "postgresql://postgres:example@postgres-service:5432/example_db"
+
+# Fetching values from environment variables
+db_username = os.environ.get('DB_USERNAME', 'default_username')
+db_password = os.environ.get('DB_PASSWORD', 'default_password')
+db_name = os.environ.get('DB_NAME', 'default_database')
+
+# Constructing the database URL
+database_url = f"postgresql://{db_username}:{db_password}@postgres-service:5432/{db_name}"
+
 
 engine = create_engine(database_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
