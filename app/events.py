@@ -13,7 +13,7 @@ class Emit:
 
     def connect(self):
         self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host='granja-service-events-receiver')
+            pika.ConnectionParameters(host='granja-message-broker')
         )
 
         self.channel = self.connection.channel()
@@ -37,7 +37,7 @@ class Receive:
         logging.info("Waiting for messages...")
 
         self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host='granja-service-events-receiver')
+            pika.ConnectionParameters(host='granja-message-broker')
         )
 
         self.channel = self.connection.channel()
