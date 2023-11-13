@@ -22,10 +22,13 @@ logging.basicConfig(level=logging.INFO,
 
 
 load_dotenv()
+rapid_api_key = os.environ.get('RAPID_API_KEY', 'default_apikey')
+rapid_api_host = os.environ.get('RAPID_API_HOST', 'default_apihost')
 
+# Headers para la solicitud HTTP
 headers = {
-	"X-RapidAPI-Key": os.getenv('RAPID_API_KEY'),
-	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+    "X-RapidAPI-Key": rapid_api_key,
+    "X-RapidAPI-Host": rapid_api_host
 }
 
 app = FastAPI(debug=True)
