@@ -1,19 +1,19 @@
-version: '3'
+version: "3"
 
 services:
-  weather:
-    build: .
-    command: uvicorn app.main:app --host 0.0.0.0 --port 80
-    ports:
-      - "80:80"
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: pytest app/test.py
     depends_on:
+      - events
       - db
   events:
     build: .
     command: python app/events.py
     depends_on:
       - db
-      - weather
   db:
     container_name: postgres-service
     image: postgres

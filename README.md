@@ -39,3 +39,9 @@ El sistema se debe ejecutar en el siguiente orden:
       docker-compose up --build
 
 - Para ingresar al servicio clima, ingresar a [localhost:80/docs](localhost:80/docs) para ver documentación del servicio.
+
+## Ejecutar Tests (Tarea 7)
+
+- Para ejecutar los tests de FastAPI
+
+      docker compose -f docker-compose.test.yaml up --build
